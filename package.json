@@ -1,5 +1,5 @@
 {
-  "name": "zane-n-kiyo-gallary",
+  "name": "zane-n-kiyo-gallery",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,6 +11,8 @@
   "dependencies": {
     "@astrojs/react": "^4.2",
     "@astrojs/sitemap": "^3.4",
+    "@fontsource/geist-mono": "^5.2",
+    "@fontsource/geist-sans": "^5.2",
     "@types/react": "^19.1",
     "@types/react-dom": "^19.1",
     "astro": "^5.7",
