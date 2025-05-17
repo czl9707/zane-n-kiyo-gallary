@@ -1,1 +1,95 @@
-<div></div>
+---
+import Section from "@/components/ui/Section.astro";
+import SectionCell from "@/components/ui/Section.Cell.astro";
+import Button from "@/components/ui/Button.astro";
+---
+
+<Section id="header">
+  <SectionCell id="header-cell" grow={3}>
+    <a href="/">
+      <h5 id="logo">
+        <span></span><span></span><span></span>
+      </h5>
+    </a>
+    <span style="flex: 1 1;"></span>
+    <a href="/gallary">
+      <Button>Gallary</Button>
+    </a>
+  </SectionCell>
+</Section>
+
+<style>
+  :global(#header) {
+    height: var(--size-header-height);
+  }
+  :global(#header-cell) {
+    padding: 0 var(--spacing-paragraph);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #logo {
+    cursor: pointer;
+    user-select: none;
+    text-wrap: wrap;
+    white-space: pre;
+
+    font-weight: 900;
+    font-size: var(--typography-h5-fontSize);
+    line-height: var(--typography-h5-lineHeight);
+
+    & span:after {
+      opacity: 0;
+      width: 0;
+      display: inline-block;
+      box-sizing: border-box;
+
+      transition: all var(--transition-short);
+    }
+    &:hover {
+      & span:nth-child(1):after,
+      & span:nth-child(3):after {
+        opacity: 1;
+        width: 3.5rem;
+      }
+      & span:nth-child(2) {
+        &:after {
+          opacity: 1;
+          width: 2rem;
+        }
+        &:before {
+          opacity: 0;
+          width: 0;
+        }
+      }
+    }
+
+    & span:nth-child(1) {
+      &:before {
+        content: "Z";
+      }
+      &:after {
+        content: "ane";
+      }
+    }
+    & span:nth-child(2) {
+      &:before {
+        content: ".";
+      }
+      &:after {
+        content: "&";
+        padding: 0.5rem 0;
+      }
+    }
+    & span:nth-child(3) {
+      &:before {
+        content: "K";
+      }
+      &:after {
+        content: "iyo";
+      }
+    }
+  }
+</style>

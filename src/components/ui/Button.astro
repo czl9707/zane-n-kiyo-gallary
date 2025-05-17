@@ -1,0 +1,50 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+  variant?: "transparent" | "solid";
+}
+
+const { class: className, id, variant = "solid" } = Astro.props;
+let buttonBackground =
+  variant === "solid" ? "rgb(var(--color-default-foreground))" : "transparent";
+let buttonTypography =
+  variant === "solid"
+    ? "rgb(var(--color-default-background))"
+    : "rgb(var(--color-default-foreground))";
+let hoverBackground =
+  variant === "solid"
+    ? "rgb(var(--color-default-foreground) / 90%)"
+    : "rgb(var(--color-default-foreground) / 10%)";
+---
+
+<div class:list={[className, "button-base"]} id={id}>
+  <slot />
+</div>
+
+<style
+  define:vars={{
+    "button-color-background": buttonBackground,
+    "button-color-typography": buttonTypography,
+    "button-color-hover": hoverBackground,
+  }}
+>
+  .button-base {
+    font-family: var(--typography-button-fontFamily);
+    font-weight: var(--typography-button-fontWeight);
+    font-size: var(--typography-button-fontSize);
+    line-height: var(--typography-button-lineHeight);
+
+    user-select: none;
+    cursor: pointer;
+
+    background: var(--button-color-background);
+    color: var(--button-color-typography);
+    padding: calc(var(--spacing-paragraph) / 2) var(--spacing-paragraph);
+    transition: background var(--transition-short);
+
+    &:hover {
+      background: var(--button-color-hover);
+    }
+  }
+</style>

@@ -1,0 +1,12 @@
+---
+import SectionCell from "@/components/ui/Section.Cell.astro";
+
+const props = Astro.props;
+
+const children = () => Astro.slots.render("default");
+---
+
+<SectionCell {...props}>
+  <div>{children()}</div>
+  <div>{children()}</div>
+</SectionCell>

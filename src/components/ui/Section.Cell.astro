@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+  grow?: number;
+  blurBackground?: boolean;
+}
+
+const { class: className, grow = 1, blurBackground = false, id } = Astro.props;
+---
+
+<div id={id} class:list={["section-cell", { blur: blurBackground }, className]}>
+  <slot />
+</div>
+
+<style define:vars={{ "cell-grow": grow }}>
+  :global(.section) > .section-cell:first-child {
+    border-left: 1px solid rgb(var(--color-default-foreground));
+  }
+  :global(.section) > .section-cell {
+    border-right: 1px solid rgb(var(--color-default-foreground));
+    box-sizing: border-box;
+    flex: var(--cell-grow) var(--cell-grow);
+    overflow-y: hidden;
+  }
+
+  :global(.section) > .section-cell {
+  }
+
+  .section-cell-blur {
+    backdrop-filter: blur(1rem);
+  }
+</style>
