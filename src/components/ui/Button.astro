@@ -14,8 +14,12 @@ let buttonTypography =
     : "rgb(var(--color-default-foreground))";
 let hoverBackground =
   variant === "solid"
-    ? "rgb(var(--color-default-foreground) / 90%)"
-    : "rgb(var(--color-default-foreground) / 10%)";
+    ? "rgb(var(--color-default-foreground) / 80%)"
+    : "rgb(var(--color-default-foreground) / 20%)";
+let activeBackground =
+  variant === "solid"
+    ? "rgb(var(--color-default-foreground) / 60%)"
+    : "rgb(var(--color-default-foreground) / 40%)";
 ---
 
 <div class:list={[className, "button-base"]} id={id}>
@@ -27,6 +31,7 @@ let hoverBackground =
     "button-color-background": buttonBackground,
     "button-color-typography": buttonTypography,
     "button-color-hover": hoverBackground,
+    "button-color-active": activeBackground,
   }}
 >
   .button-base {
@@ -45,6 +50,9 @@ let hoverBackground =
 
     &:hover {
       background: var(--button-color-hover);
+    }
+    &:active {
+      background: var(--button-color-active);
     }
   }
 </style>

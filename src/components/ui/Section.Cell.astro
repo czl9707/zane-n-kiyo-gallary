@@ -1,26 +1,28 @@
 ---
-interface Props {
-  class?: string;
-  id?: string;
-  grow?: number;
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
   blurBackground?: boolean;
 }
 
-const { class: className, grow = 1, blurBackground = false, id } = Astro.props;
+const { class: className, blurBackground = false, ...others } = Astro.props;
 ---
 
-<div id={id} class:list={["section-cell", { blur: blurBackground }, className]}>
+<div
+  class:list={["section-cell", { blur: blurBackground }, className]}
+  {...others}
+>
   <slot />
 </div>
 
-<style define:vars={{ "cell-grow": grow }}>
+<style>
   :global(.section) > .section-cell:first-child {
     border-left: 1px solid rgb(var(--color-default-foreground));
   }
   :global(.section) > .section-cell {
     border-right: 1px solid rgb(var(--color-default-foreground));
     box-sizing: border-box;
-    flex: var(--cell-grow) var(--cell-grow);
+    flex: 1 1;
     overflow-y: hidden;
   }
 

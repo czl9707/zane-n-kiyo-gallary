@@ -1,13 +1,12 @@
 ---
-interface Props {
-  class?: string;
-  id?: string;
-}
+import type { HTMLAttributes } from "astro/types";
 
-const { class: className, id } = Astro.props;
+interface Props extends HTMLAttributes<"div"> {}
+
+const { class: className, ...others } = Astro.props;
 ---
 
-<div class:list={["section", className]} id={id}>
+<div class:list={["section", className]} {...others}>
   <slot />
 </div>
 
@@ -19,6 +18,7 @@ const { class: className, id } = Astro.props;
     align-items: stretch;
     box-sizing: border-box;
 
-    padding: 0 var(--spacing-group);
+    padding: 0
+      max(calc((100vw - var(--breakpoint-lg)) / 2), var(--spacing-group));
   }
 </style>
