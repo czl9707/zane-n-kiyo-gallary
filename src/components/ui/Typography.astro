@@ -1,0 +1,55 @@
+---
+import type { Polymorphic } from "astro/types";
+
+const typographyTag = [
+  "p",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "span",
+] as const;
+const typographyVariant = [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "button",
+  "body1",
+  "body2",
+  "code",
+] as const;
+
+type Props<Tag extends (typeof typographyTag)[number]> = Polymorphic<{
+  as: Tag;
+}> & {
+  variant: (typeof typographyVariant)[number];
+};
+
+let { as: Tag, variant, class: className, ...others } = Astro.props;
+if (Tag == undefined) {
+  Tag = variant.startsWith("h") ? variant : "p";
+}
+
+const bulkStyle = typographyVariant
+  .map(
+    (v) => `
+.typography-${v} {
+    font-family: var(--typography-${v}-fontFamily);
+    font-weight: var(--typography-${v}-fontWeight);
+    font-size: var(--typography-${v}-fontSize);
+    line-height: var(--typography-${v}-lineHeight);
+}`
+  )
+  .join("\n");
+---
+
+<Tag {...others} class:list={[`typography-${variant}`, className]}>
+  <slot />
+</Tag>
+
+<style set:text={bulkStyle}></style>

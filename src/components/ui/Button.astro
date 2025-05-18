@@ -1,4 +1,6 @@
 ---
+import Typography from "./Typography.astro";
+
 interface Props {
   class?: string;
   id?: string;
@@ -23,7 +25,9 @@ let activeBackground =
 ---
 
 <div class:list={[className, "button-base"]} id={id}>
-  <slot />
+  <Typography as="span" variant="button">
+    <slot />
+  </Typography>
 </div>
 
 <style
@@ -35,11 +39,6 @@ let activeBackground =
   }}
 >
   .button-base {
-    font-family: var(--typography-button-fontFamily);
-    font-weight: var(--typography-button-fontWeight);
-    font-size: var(--typography-button-fontSize);
-    line-height: var(--typography-button-lineHeight);
-
     user-select: none;
     cursor: pointer;
 

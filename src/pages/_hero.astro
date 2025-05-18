@@ -1,4 +1,54 @@
 ---
 import Section from "@/components/ui/Section.astro";
-import SectionCell from "@/components/ui/Section.astro";
+import SectionCell from "@/components/ui/Section.Cell.astro";
 ---
+
+<Section id="hero">
+  <SectionCell id="hero-zane" data-active="true">
+    <div></div>
+  </SectionCell>
+  <SectionCell id="hero-kiyo">
+    <div></div>
+  </SectionCell>
+</Section>
+
+<script>
+  const heroZane = document.querySelector("#hero-zane")!;
+  const heroKiyo = document.querySelector("#hero-kiyo")!;
+  console.log(heroZane);
+  console.log(heroKiyo);
+  heroZane.addEventListener("mouseenter", () => {
+    heroZane.setAttribute("data-active", "true");
+    heroKiyo.setAttribute("data-active", "false");
+  });
+  heroKiyo.addEventListener("mouseenter", () => {
+    heroZane.setAttribute("data-active", "false");
+    heroKiyo.setAttribute("data-active", "true");
+  });
+</script>
+
+<style>
+  :global(#hero) {
+    height: min(calc(100vh - var(--size-header-height)), 35rem);
+  }
+
+  #hero-zane {
+    background: rgb(var(--color-default-background));
+    color: rgb(var(--color-default-foreground));
+  }
+  #hero-kiyo {
+    background: rgb(var(--color-default-foreground));
+    color: rgb(var(--color-default-background));
+  }
+
+  #hero-zane,
+  #hero-kiyo {
+    display: relative;
+
+    transition: flex var(--transition-long) cubic-bezier(0, 0.55, 0.595, 1);
+    flex: 1 1;
+    &[data-active="true"] {
+      flex: 5 5;
+    }
+  }
+</style>
