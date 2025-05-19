@@ -21,13 +21,17 @@ import Button from "@/components/ui/Button.astro";
 <style>
   :global(#header) {
     height: var(--size-header-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
   :global(#header-cell) {
     padding: 0 var(--spacing-paragraph);
-
+    
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: rgb(var(--color-default-background));
   }
 
   #logo {

@@ -1,11 +1,17 @@
 ---
 import Section from "@/components/ui/Section.astro";
 import SectionCell from "@/components/ui/Section.Cell.astro";
+import Typography from "@/components/ui/Typography.astro";
 ---
 
 <Section id="hero">
   <SectionCell id="hero-zane" data-active="true">
-    <div></div>
+    <div>
+      <Typography variant="h4">
+        Precision in detail, vision in design, <br/>
+        building things one block at a time.
+      </Typography>
+    </div>
   </SectionCell>
   <SectionCell id="hero-kiyo">
     <div></div>
@@ -15,8 +21,7 @@ import SectionCell from "@/components/ui/Section.Cell.astro";
 <script>
   const heroZane = document.querySelector("#hero-zane")!;
   const heroKiyo = document.querySelector("#hero-kiyo")!;
-  console.log(heroZane);
-  console.log(heroKiyo);
+
   heroZane.addEventListener("mouseenter", () => {
     heroZane.setAttribute("data-active", "true");
     heroKiyo.setAttribute("data-active", "false");
@@ -48,7 +53,7 @@ import SectionCell from "@/components/ui/Section.Cell.astro";
     transition: flex var(--transition-long) cubic-bezier(0, 0.55, 0.595, 1);
     flex: 1 1;
     &[data-active="true"] {
-      flex: 5 5;
+      flex: 7 7;
     }
   }
 </style>

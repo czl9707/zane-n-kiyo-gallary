@@ -1,1 +1,27 @@
-<div></div>
+---
+import Section from "@/components/ui/Section.astro";
+import SectionCell from "@/components/ui/Section.Cell.astro";
+---
+
+<Section id="footer">
+  <SectionCell>
+    <div></div>
+  </SectionCell>
+  <SectionCell>
+    <div></div>
+  </SectionCell>
+  <SectionCell>
+    <div></div>
+  </SectionCell>
+  <SectionCell>
+    <div></div>
+  </SectionCell>
+</Section>
+
+
+<style>
+  :global(#footer) {
+    min-height: 5rem;
+    border-bottom: none;
+  }
+</style>
