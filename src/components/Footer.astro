@@ -1,27 +1,89 @@
 ---
 import Section from "@/components/ui/Section.astro";
 import SectionCell from "@/components/ui/Section.Cell.astro";
+import Typography from "@/components/ui/Typography.astro";
+import { undefined } from "astro:schema";
+
+const zaneLinks = [
+    {
+        name: "Github",
+        href: "https://github.com/czl9707"
+    },
+    {
+        name: "Linkedin",
+        href: "https://www.linkedin.com/in/zeling-chen/"
+    },
+    {
+        name: "Website",
+        href: "https://zane-portfolio.kiyo-n-zane.com/"
+    },
+    {
+        name: "Medium",
+        href: "https://medium.com/@czl970721"
+    }
+]
+const kiyoLinks = [
+    {
+        name: "Linkedin",
+        href: "https://www.linkedin.com/in/kiyo-qing-yang/"
+    },
+    {
+        name: "Website[Under Construction]",
+        href: undefined
+    },
+]
 ---
 
 <Section id="footer">
-  <SectionCell>
-    <div></div>
+  <SectionCell class="footer-cell">
+    <Typography variant="body2" style={{ opacity: ".5" }}>
+      © 2024-present <br />
+      Zane Chen & Kiyo Yang. <br />
+      All Rights Reserved.
+    </Typography>
   </SectionCell>
-  <SectionCell>
-    <div></div>
+  <SectionCell class="footer-cell" />
+  <SectionCell class="footer-cell">
+    <Typography variant="h6"> Zane Chen </Typography>
+    <br/>
+    <div class="link-list">
+        {
+            zaneLinks.map(link => (
+                <a href={link.href}>
+                    <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
+                </a>
+            ))
+        }
+    </div>
   </SectionCell>
-  <SectionCell>
-    <div></div>
-  </SectionCell>
-  <SectionCell>
-    <div></div>
+  <SectionCell class="footer-cell">
+    <Typography variant="h6"> Kiyo Yang </Typography>
+    <br/>
+    <div class="link-list">
+        {
+            kiyoLinks.map(link => (
+                <a href={link.href}>
+                    <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
+                </a>
+            ))
+        }
+    </div>
   </SectionCell>
 </Section>
 
-
 <style>
   :global(#footer) {
-    min-height: 5rem;
+    min-height: 7rem;
     border-bottom: none;
+  }
+
+  :global(.footer-cell) {
+    padding: var(--spacing-component);
+  }
+
+  .link-list {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
   }
 </style>

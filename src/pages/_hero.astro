@@ -5,16 +5,16 @@ import Typography from "@/components/ui/Typography.astro";
 ---
 
 <Section id="hero">
-  <SectionCell id="hero-zane" data-active="true">
-    <div>
-      <Typography variant="h4">
-        Precision in detail, vision in design, <br/>
-        building things one block at a time.
-      </Typography>
+  <SectionCell id="hero-cell">
+    <div id="hero-zane" data-active="true">
+      <div>
+        <Typography variant="h4">
+          Precision in detail, vision in design, <br/>
+          building things one block at a time.
+        </Typography>
+      </div>
     </div>
-  </SectionCell>
-  <SectionCell id="hero-kiyo">
-    <div></div>
+    <div id="hero-kiyo" data-active="false"></div>
   </SectionCell>
 </Section>
 
@@ -36,24 +36,34 @@ import Typography from "@/components/ui/Typography.astro";
   :global(#hero) {
     height: min(calc(100vh - var(--size-header-height)), 35rem);
   }
+  #hero-cell {
+    position: relative;
+  }
 
   #hero-zane {
+    left: 0;
     background: rgb(var(--color-default-background));
     color: rgb(var(--color-default-foreground));
   }
   #hero-kiyo {
+    right: 0;
     background: rgb(var(--color-default-foreground));
     color: rgb(var(--color-default-background));
   }
 
   #hero-zane,
   #hero-kiyo {
-    display: relative;
+    transition: width var(--transition-long) cubic-bezier(0, 0.55, 0.595, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
 
-    transition: flex var(--transition-long) cubic-bezier(0, 0.55, 0.595, 1);
-    flex: 1 1;
+    width: 25%;
     &[data-active="true"] {
-      flex: 7 7;
+      width: 75%;
     }
+
+
   }
 </style>
