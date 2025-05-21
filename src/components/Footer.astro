@@ -2,7 +2,6 @@
 import Section from "@/components/ui/Section.astro";
 import SectionCell from "@/components/ui/Section.Cell.astro";
 import Typography from "@/components/ui/Typography.astro";
-import { undefined } from "astro:schema";
 
 const zaneLinks = [
     {
@@ -28,7 +27,7 @@ const kiyoLinks = [
         href: "https://www.linkedin.com/in/kiyo-qing-yang/"
     },
     {
-        name: "Website[Under Construction]",
+        name: "Website",
         href: undefined
     },
 ]
@@ -49,9 +48,9 @@ const kiyoLinks = [
     <div class="link-list">
         {
             zaneLinks.map(link => (
-                <a href={link.href}>
-                    <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
-                </a>
+              <a href={link.href}>
+                  <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
+              </a>
             ))
         }
     </div>
@@ -61,10 +60,12 @@ const kiyoLinks = [
     <br/>
     <div class="link-list">
         {
-            kiyoLinks.map(link => (
-                <a href={link.href}>
-                    <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
-                </a>
+            kiyoLinks.map(link => link.href != undefined ? (
+              <a href={link.href}>
+                <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
+              </a>
+            ): (
+                <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
             ))
         }
     </div>
@@ -73,7 +74,7 @@ const kiyoLinks = [
 
 <style>
   :global(#footer) {
-    min-height: 7rem;
+    min-height: var(--size-footer-height);
     border-bottom: none;
   }
 

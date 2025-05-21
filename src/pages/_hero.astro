@@ -5,65 +5,145 @@ import Typography from "@/components/ui/Typography.astro";
 ---
 
 <Section id="hero">
-  <SectionCell id="hero-cell">
-    <div id="hero-zane" data-active="true">
-      <div>
-        <Typography variant="h4">
-          Precision in detail, vision in design, <br/>
-          building things one block at a time.
-        </Typography>
-      </div>
-    </div>
-    <div id="hero-kiyo" data-active="false"></div>
+  <SectionCell class="hero-cell">
+    <svg width={"100%"} viewBox="0 0 45 8">
+      <title id="zane-n-kiyo">Zane & Kiyo</title>
+      <text id="svg-text" x="50%" y="60%"
+        textLength={45} lengthAdjust="spacingAndGlyphs"
+        font-weight={700} font-size="7.5px"
+        dominant-baseline="middle" text-anchor="middle"
+      >
+        ZANE & KIYO
+      </text>
+    </svg>
   </SectionCell>
 </Section>
-
-<script>
-  const heroZane = document.querySelector("#hero-zane")!;
-  const heroKiyo = document.querySelector("#hero-kiyo")!;
-
-  heroZane.addEventListener("mouseenter", () => {
-    heroZane.setAttribute("data-active", "true");
-    heroKiyo.setAttribute("data-active", "false");
-  });
-  heroKiyo.addEventListener("mouseenter", () => {
-    heroZane.setAttribute("data-active", "false");
-    heroKiyo.setAttribute("data-active", "true");
-  });
-</script>
+<Section>
+  <SectionCell class="hero-cell" style={{paddingRight: "50%"}}>
+    <Typography variant="h4">
+      This is a little digital corner for Zane & Kiyo!
+    </Typography>
+    <br/>
+    <Typography variant="body1" style={{opacity: .5}}>
+      Zane and Kiyo met in architecture school during college. Though their paths later diverged—Zane becoming a software engineer and Kiyo a UX designer—they've carried the same creativity and passion from their early days into everything they do.    
+    </Typography>
+  </SectionCell>
+</Section>
+<Section>
+  <SectionCell class="hero-cell" >
+    <svg width={"100%"} viewBox="0 0 45 8">
+      <title id="zane-n-kiyo">Zane & Kiyo</title>
+      <text id="svg-text" x="50%" y="60%"
+        textLength={45} lengthAdjust="spacingAndGlyphs"
+        font-weight={700} font-size="7.5px"
+        dominant-baseline="middle" text-anchor="middle"
+      >
+        ZANE CHEN
+      </text>
+    </svg>
+    <br/>
+    <Typography variant="h6" style={{opacity: .5}}>
+      Precision in detail, vision in design, <br/>
+      building things one block at a time.
+    </Typography>
+    <br/>
+    <ul>
+      <li>
+        <Typography variant="body1">
+          Once an <a href="https://zane-portfolio.kiyo-n-zane.com/as/architect/project">Architect</a>.
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          Now a <a href="https://zane-portfolio.kiyo-n-zane.com/">Software Engineer</a>.
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          A gym bro.
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          Pickel's Daddy. (Yeah, that's our cat.)
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          Always finding insteresting projects.
+        </Typography>
+      </li>
+    </ul>
+  </SectionCell>
+  <SectionCell class="hero-cell" >
+    <svg width={"100%"} viewBox="0 0 45 8">
+      <title id="zane-n-kiyo">Zane & Kiyo</title>
+      <text id="svg-text" x="50%" y="60%"
+        textLength={45} lengthAdjust="spacingAndGlyphs"
+        font-weight={700} font-size="7.5px"
+        dominant-baseline="middle" text-anchor="middle"
+      >
+        KIYO YANG
+      </text>
+    </svg>
+    <br/>
+    <Typography variant="h6" style={{opacity: .5}}>
+      Solving user and business problems, <br/>
+      with solid research and empathy.
+    </Typography>
+    <br/>
+    <ul>
+      <li>
+        <Typography variant="body1">
+          Once an Architect.
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          Now a UX designer.
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          A 200-hour Yoga Coach.
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          Pickel's Mommy.
+        </Typography>
+      </li>
+      <li>
+        <Typography variant="body1">
+          Always bothered by 👈 Zane's project ideas.
+        </Typography>
+      </li>
+    </ul>
+  </SectionCell>
+</Section>
+<!-- Precision in detail, vision in design, <br/>
+building things one block at a time. -->
 
 <style>
-  :global(#hero) {
-    height: min(calc(100vh - var(--size-header-height)), 35rem);
-  }
-  #hero-cell {
+  /* :global(#hero) {
+    min-height: calc(100vh - var(--size-footer-height));
+  } */
+  :global(.hero-cell) {
     position: relative;
+    padding: var(--spacing-component)
   }
 
-  #hero-zane {
-    left: 0;
-    background: rgb(var(--color-default-background));
-    color: rgb(var(--color-default-foreground));
-  }
-  #hero-kiyo {
-    right: 0;
-    background: rgb(var(--color-default-foreground));
-    color: rgb(var(--color-default-background));
+  #svg-text {
+    fill: rgb(var(--color-default-foreground));
+    font-family: var(--typography-h1-fontFamily);
+    user-select: none;
   }
 
-  #hero-zane,
-  #hero-kiyo {
-    transition: width var(--transition-long) cubic-bezier(0, 0.55, 0.595, 1);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    overflow-x: hidden;
+  ul {
+    padding-inline-start: 1.5rem;
 
-    width: 25%;
-    &[data-active="true"] {
-      width: 75%;
+    a {
+      text-decoration: underline;
     }
-
-
   }
 </style>
