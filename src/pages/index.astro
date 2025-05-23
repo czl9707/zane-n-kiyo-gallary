@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Head from "@/layouts/Head.astro";
 import HeroSection from "./_hero.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -8,18 +9,8 @@ import HeroSection from "./_hero.astro";
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Zane & Kiyo</title>
-    <meta
-      name="description"
-      content="Zane - A Fullstack Engineer, Ex-Architect. Kiyo - A UX Designer, Ex-Architect."
-    />
-    <Layout>
-      <HeroSection />
-    </Layout>
-  </head>
+  <Head title="Zane & Kiyo" description="Zane and Kiyo - Ex-Architect couple, Currently in Software Engineering and Product Design."/> 
+  <Layout>
+    <HeroSection />
+  </Layout>
 </html>

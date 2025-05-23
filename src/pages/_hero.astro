@@ -18,7 +18,7 @@ const scrollingTexts = [
 ---
 
 <Section id="hero">
-  <SectionCell class="hero-cell">
+  <SectionCell class="hero-section-cell-base">
     <svg width={"100%"} viewBox="0 0 45 8">
       <title id="zane-n-kiyo">Zane & Kiyo</title>
       <text id="svg-text" x="50%" y="60%"
@@ -32,7 +32,7 @@ const scrollingTexts = [
   </SectionCell>
 </Section>
 <Section>
-  <SectionCell class="hero-cell" style={{paddingRight: "50%", paddingBottom: "var(--spacing-block)"}}>
+  <SectionCell class="hero-section-cell-base left-only top-only"}}>
     <Typography variant="h4">
       This is a little digital corner for Zane & Kiyo!
     </Typography>
@@ -52,7 +52,24 @@ const scrollingTexts = [
   </SectionCell>
 </Section>
 <Section>
-  <SectionCell class="hero-cell" style={{paddingBottom: "var(--spacing-block)"}}>
+  <SectionCell id="pickle-section-cell" class="hero-section-cell-base top-only left-only">
+    <Typography variant="h4">
+      And Pickle's Home
+    </Typography>
+    <br/>
+    <Typography variant="body1" style={{opacity: .5}}>
+      Yeah, she is our cat. 
+      <br/><br/>
+      Her favorite activities include: <br/>  
+      - Sleeping right in front of her daddy's monitor. Just like now. <br/>
+      - Sleeping in the middle of dinner table. <br/>
+      - Sleeping between mommy and daddy at night. <br/>
+      - And yelling when waiting for us opening her cans.
+    </Typography>
+  </SectionCell>
+</Section>
+<Section>
+  <SectionCell class="hero-section-cell-base top-only">
     <svg width={"100%"} viewBox="0 0 45 8">
       <title id="zane-n-kiyo">Zane & Kiyo</title>
       <text id="svg-text" x="50%" y="60%"
@@ -87,7 +104,7 @@ const scrollingTexts = [
       </li>
       <li>
         <Typography variant="body1">
-          Pickel's Daddy. (Yeah, that's our cat.)
+          Pickle's Daddy.
         </Typography>
       </li>
       <li>
@@ -97,7 +114,7 @@ const scrollingTexts = [
       </li>
     </ul>
   </SectionCell>
-  <SectionCell class="hero-cell" style={{paddingBottom: "var(--spacing-block)"}}>
+  <SectionCell class="hero-section-cell-base top-only">
     <svg width={"100%"} viewBox="0 0 45 8">
       <title id="zane-n-kiyo">Zane & Kiyo</title>
       <text id="svg-text" x="50%" y="60%"
@@ -132,7 +149,7 @@ const scrollingTexts = [
       </li>
       <li>
         <Typography variant="body1">
-          Pickel's Mommy.
+          Pickle's Mommy.
         </Typography>
       </li>
       <li>
@@ -145,18 +162,30 @@ const scrollingTexts = [
 </Section>
 
 <style>
-  /* :global(#hero) {
-    min-height: calc(100vh - var(--size-footer-height));
-  } */
-  :global(.hero-cell) {
+  :global(.hero-section-cell-base) {
     position: relative;
     padding: var(--spacing-component);
+
+    &.left-only {
+      padding-right: 50%;
+    }
+    &.top-only {
+      padding-bottom: var(--spacing-block);
+    }
   }
 
   #svg-text {
     fill: rgb(var(--color-default-foreground));
     font-family: var(--typography-h1-fontFamily);
     user-select: none;
+  }
+
+  :global(#pickle-section-cell) {
+    background-image: url(/public/pickle.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    min-height: 25rem;
   }
 
   ul {

@@ -7,5 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), sitemap()]
+  integrations: [react(), sitemap()],
+  site: "https://kiyo-n-zane.com",
+  trailingSlash: "always",
 });

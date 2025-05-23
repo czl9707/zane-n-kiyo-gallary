@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2",
-    "@astrojs/sitemap": "^3.4",
-    "@fontsource/geist-mono": "^5.2",
+    "@astrojs/sitemap": "^3.4.0",
     "@fontsource/geist": "^5.2",
+    "@fontsource/geist-mono": "^5.2",
     "@types/react": "^19.1",
     "@types/react-dom": "^19.1",
     "astro": "^5.7",

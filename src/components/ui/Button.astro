@@ -1,13 +1,12 @@
 ---
 import Typography from "@/components/ui/Typography.astro";
+import type { HTMLAttributes } from "astro/types";
 
-interface Props {
-  class?: string;
-  id?: string;
+interface Props extends HTMLAttributes<"div">{
   variant?: "transparent" | "solid";
 }
 
-const { class: className, id, variant = "solid" } = Astro.props;
+const { class: className, variant = "solid", ...others } = Astro.props;
 let buttonBackground =
   variant === "solid" ? "rgb(var(--color-default-foreground))" : "transparent";
 let buttonTypography =
@@ -24,7 +23,7 @@ let activeBackground =
     : "rgb(var(--color-default-foreground) / 40%)";
 ---
 
-<div class:list={[className, "button-base"]} id={id}>
+<div class:list={[className, "button-base"]} {...others}>
   <Typography as="span" variant="button">
     <slot />
   </Typography>
