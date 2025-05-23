@@ -35,21 +35,80 @@ if (Tag == undefined) {
   Tag = variant.startsWith("h") ? variant : "p";
 }
 
-const bulkStyle = typographyVariant
-  .map(
-    (v) => `
-.typography-${v} {
-    font-family: var(--typography-${v}-fontFamily);
-    font-weight: var(--typography-${v}-fontWeight);
-    font-size: var(--typography-${v}-fontSize);
-    line-height: var(--typography-${v}-lineHeight);
-}`
-  )
-  .join("\n");
 ---
 
 <Tag {...others} class:list={[`typography-${variant}`, className]}>
   <slot />
 </Tag>
 
-<style set:text={bulkStyle}></style>
+<style>
+.typography-h1 {
+    font-family: var(--typography-h1-fontFamily);
+    font-weight: var(--typography-h1-fontWeight);
+    font-size: var(--typography-h1-fontSize);
+    line-height: var(--typography-h1-lineHeight);
+}
+
+.typography-h2 {
+    font-family: var(--typography-h2-fontFamily);
+    font-weight: var(--typography-h2-fontWeight);
+    font-size: var(--typography-h2-fontSize);
+    line-height: var(--typography-h2-lineHeight);
+}
+
+.typography-h3 {
+    font-family: var(--typography-h3-fontFamily);
+    font-weight: var(--typography-h3-fontWeight);
+    font-size: var(--typography-h3-fontSize);
+    line-height: var(--typography-h3-lineHeight);
+}
+
+.typography-h4 {
+    font-family: var(--typography-h4-fontFamily);
+    font-weight: var(--typography-h4-fontWeight);
+    font-size: var(--typography-h4-fontSize);
+    line-height: var(--typography-h4-lineHeight);
+}
+
+.typography-h5 {
+    font-family: var(--typography-h5-fontFamily);
+    font-weight: var(--typography-h5-fontWeight);
+    font-size: var(--typography-h5-fontSize);
+    line-height: var(--typography-h5-lineHeight);
+}
+
+.typography-h6 {
+    font-family: var(--typography-h6-fontFamily);
+    font-weight: var(--typography-h6-fontWeight);
+    font-size: var(--typography-h6-fontSize);
+    line-height: var(--typography-h6-lineHeight);
+}
+
+.typography-button {
+    font-family: var(--typography-button-fontFamily);
+    font-weight: var(--typography-button-fontWeight);
+    font-size: var(--typography-button-fontSize);
+    line-height: var(--typography-button-lineHeight);
+}
+
+.typography-body1 {
+    font-family: var(--typography-body1-fontFamily);
+    font-weight: var(--typography-body1-fontWeight);
+    font-size: var(--typography-body1-fontSize);
+    line-height: var(--typography-body1-lineHeight);
+}
+
+.typography-body2 {
+    font-family: var(--typography-body2-fontFamily);
+    font-weight: var(--typography-body2-fontWeight);
+    font-size: var(--typography-body2-fontSize);
+    line-height: var(--typography-body2-lineHeight);
+}
+
+.typography-code {
+    font-family: var(--typography-code-fontFamily);
+    font-weight: var(--typography-code-fontWeight);
+    font-size: var(--typography-code-fontSize);
+    line-height: var(--typography-code-lineHeight);
+}
+</style>

@@ -2,6 +2,19 @@
 import Section from "@/components/ui/Section.astro";
 import SectionCell from "@/components/ui/Section.Cell.astro";
 import Typography from "@/components/ui/Typography.astro";
+
+const scrollingTexts = [
+  "Cat",
+  "Workout",
+  "Web Design",
+  "Architecture",
+  "Life",
+  "Coffee",
+  "Travel",
+  "Software Engineering",
+  "Yoga",
+  "Love",
+]
 ---
 
 <Section id="hero">
@@ -19,7 +32,7 @@ import Typography from "@/components/ui/Typography.astro";
   </SectionCell>
 </Section>
 <Section>
-  <SectionCell class="hero-cell" style={{paddingRight: "50%"}}>
+  <SectionCell class="hero-cell" style={{paddingRight: "50%", paddingBottom: "var(--spacing-block)"}}>
     <Typography variant="h4">
       This is a little digital corner for Zane & Kiyo!
     </Typography>
@@ -30,7 +43,16 @@ import Typography from "@/components/ui/Typography.astro";
   </SectionCell>
 </Section>
 <Section>
-  <SectionCell class="hero-cell" >
+  <SectionCell>
+    <div id="scrolling-keywords">
+      {
+        scrollingTexts.map(t => (<Typography variant="h4" as="span">{t}</Typography>))
+      }
+    </div>
+  </SectionCell>
+</Section>
+<Section>
+  <SectionCell class="hero-cell" style={{paddingBottom: "var(--spacing-block)"}}>
     <svg width={"100%"} viewBox="0 0 45 8">
       <title id="zane-n-kiyo">Zane & Kiyo</title>
       <text id="svg-text" x="50%" y="60%"
@@ -75,7 +97,7 @@ import Typography from "@/components/ui/Typography.astro";
       </li>
     </ul>
   </SectionCell>
-  <SectionCell class="hero-cell" >
+  <SectionCell class="hero-cell" style={{paddingBottom: "var(--spacing-block)"}}>
     <svg width={"100%"} viewBox="0 0 45 8">
       <title id="zane-n-kiyo">Zane & Kiyo</title>
       <text id="svg-text" x="50%" y="60%"
@@ -121,8 +143,6 @@ import Typography from "@/components/ui/Typography.astro";
     </ul>
   </SectionCell>
 </Section>
-<!-- Precision in detail, vision in design, <br/>
-building things one block at a time. -->
 
 <style>
   /* :global(#hero) {
@@ -130,7 +150,7 @@ building things one block at a time. -->
   } */
   :global(.hero-cell) {
     position: relative;
-    padding: var(--spacing-component)
+    padding: var(--spacing-component);
   }
 
   #svg-text {
@@ -146,4 +166,42 @@ building things one block at a time. -->
       text-decoration: underline;
     }
   }
+
+  #scrolling-keywords {
+    padding: var(--spacing-paragraph) 0;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--spacing-component);
+    overflow-x: hidden;
+
+    &>span {
+      text-wrap: nowrap;
+    }
+  }
 </style>
+<script>
+const container = document.querySelector("#scrolling-keywords")!;
+
+let shiftSize = 0;
+const animateStep = () => {
+  const firstChild = container.children[0];
+  const secondChild = container.children[1];
+
+  if (secondChild.getBoundingClientRect().left < container.getBoundingClientRect().left)
+  {
+    shiftSize = 0;
+    container.removeChild(firstChild);
+    firstChild.setAttribute("style", "");
+    container.appendChild(firstChild);
+  }
+  else {
+    firstChild.setAttribute("style", `margin-left: ${shiftSize}px;`);
+    shiftSize -= .5;
+  }
+
+  requestAnimationFrame(animateStep);
+}
+
+requestAnimationFrame(animateStep);
+
+</script>
