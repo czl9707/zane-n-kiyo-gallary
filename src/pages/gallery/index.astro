@@ -1,0 +1,43 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Head from "@/layouts/Head.astro";
+import Section from "@/components/ui/Section.astro";
+import SectionCell from "@/components/ui/Section.Cell.astro";
+import Card from "./_card.astro";
+
+import * as ZaneArchProject from "@/lib/model/zane-arch-project"
+
+const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
+
+
+
+---
+
+<!doctype html>
+<html lang="en">
+  <Head
+    title="Gallary"
+    description="Zane and Kiyo - Ex-Architect couple, Currently in Software Engineering and Product Design."
+  />
+  <Layout>
+    <Section class="gallary-section">
+        <SectionCell class="gallary-gutter-section-cell">
+            {
+                cardsCollections.map(card => <Card {...card}/>)
+            }
+        </SectionCell>
+        <SectionCell class="gallary-gutter-section-cell">
+        </SectionCell>
+        <SectionCell class="gallary-gutter-section-cell">
+        </SectionCell>        
+        <SectionCell class="gallary-gutter-section-cell">
+        </SectionCell>
+    </Section>
+  </Layout>
+</html>
+
+<style>
+    :global(.gallary-gutter-section-cell) {
+        padding-bottom: 2rem;
+    }
+</style>

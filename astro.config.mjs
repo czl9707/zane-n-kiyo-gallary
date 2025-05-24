@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import react from '@astrojs/react';
 
@@ -9,5 +9,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   integrations: [react(), sitemap()],
   site: "https://kiyo-n-zane.com",
-  trailingSlash: "always",
+  trailingSlash: "ignore",
+  env: {
+    schema: {
+      ADMIN_URL: envField.number({ context: "server", access: "secret" }),
+      ADMIN_APIKEY: envField.string({ context: "server", access: "secret" }),
+    }
+  }
 });

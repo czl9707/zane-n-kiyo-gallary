@@ -1,0 +1,19 @@
+---
+import type { CardInfo } from "@/lib/model/common.type";
+
+interface Props extends CardInfo {};
+
+const {date, img, title, href, linkText} = Astro.props;
+---
+
+<div class="card">
+    <div class="card-img-container">
+        <img src={img.url} alt={title} /> 
+    </div>
+</div>
+
+<style>
+  .card {
+    border-bottom: 1px solid rgb(var(--color-default-foreground));
+  }
+</style>
