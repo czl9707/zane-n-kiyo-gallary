@@ -10,6 +10,7 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   site: "https://kiyo-n-zane.com",
   trailingSlash: "ignore",
+  compressHTML: true,
   env: {
     schema: {
       ADMIN_URL: envField.number({ context: "server", access: "secret" }),

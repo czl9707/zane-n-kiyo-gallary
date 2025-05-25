@@ -2,14 +2,15 @@
 import Section from "@/components/ui/Section.astro";
 import SectionCell from "@/components/ui/Section.Cell.astro";
 import Button from "@/components/ui/Button.astro";
+import Typography from "./ui/Typography.astro";
 ---
 
 <Section id="header">
-  <SectionCell id="header-cell">
+  <SectionCell id="header-cell" blurBackground>
     <a href="/">
-      <h5 id="logo">
+      <Typography variant="h5" id="logo">
         <span></span><span></span><span></span>
-      </h5>
+      </Typography>
     </a>
     <span style={{ flex: "1 1" }}></span>
     <a href="/gallery">
@@ -31,7 +32,6 @@ import Button from "@/components/ui/Button.astro";
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: rgb(var(--color-default-background));
   }
 
   #logo {
@@ -41,8 +41,6 @@ import Button from "@/components/ui/Button.astro";
     white-space: pre;
 
     font-weight: 900;
-    font-size: var(--typography-h5-fontSize);
-    line-height: var(--typography-h5-lineHeight);
 
     & span:after {
       opacity: 0;

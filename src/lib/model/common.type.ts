@@ -5,10 +5,22 @@ export interface ImageInfo {
     alt: string,
 }
 
-export interface CardInfo {
+interface CardInfoWithHref {
+    author: "Kiyo"|"Zane",
     title: string,
     date: Date,
     img: ImageInfo,
-    href?: string,
-    linkText?: string,
+    href: string,
+    hrefText: string,
 }
+
+interface CardInfoWithoutHref {
+    author: "Kiyo"|"Zane",
+    title: string,
+    date: Date,
+    img: ImageInfo,
+    href: undefined,
+    hrefText: undefined,
+}
+
+export type CardInfo = CardInfoWithHref | CardInfoWithoutHref;

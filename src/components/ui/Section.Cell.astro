@@ -9,7 +9,7 @@ const { class: className, blurBackground = false, ...others } = Astro.props;
 ---
 
 <div
-  class:list={["section-cell", { blur: blurBackground }, className]}
+  class:list={["section-cell", { "section-cell-blur": blurBackground }, className]}
   {...others}
 >
   <slot />
@@ -24,9 +24,6 @@ const { class: className, blurBackground = false, ...others } = Astro.props;
     box-sizing: border-box;
     flex: 1 1;
     overflow-y: hidden;
-  }
-
-  :global(.section) > .section-cell {
   }
 
   .section-cell-blur {

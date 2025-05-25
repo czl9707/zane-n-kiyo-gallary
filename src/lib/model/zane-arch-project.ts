@@ -38,10 +38,11 @@ export async function getAllAsCardInfo(): Promise<CardInfo[]> {
 
 export function asCard(dto: ZaneArchProjectDto): CardInfo {
     return {
+        author: "Zane",
         title: dto.title as string,
         href: `https://zane-portfolio.kiyo-n-zane.com/as/architect/project/${dto.link}`,
         date: new Date(dto.startDate),
         img: dto.cover,
-        linkText: "View Project"
+        hrefText: "View Project"
     }
 }

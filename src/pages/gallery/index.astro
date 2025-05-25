@@ -16,28 +16,33 @@ const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
 <!doctype html>
 <html lang="en">
   <Head
-    title="Gallary"
+    title="Gallery"
     description="Zane and Kiyo - Ex-Architect couple, Currently in Software Engineering and Product Design."
   />
   <Layout>
-    <Section class="gallary-section">
-        <SectionCell class="gallary-gutter-section-cell">
+    <Section id="gallery-section">
+        <SectionCell class="gallery-gutter-section-cell">
             {
                 cardsCollections.map(card => <Card {...card}/>)
             }
         </SectionCell>
-        <SectionCell class="gallary-gutter-section-cell">
+        <SectionCell class="gallery-gutter-section-cell">
         </SectionCell>
-        <SectionCell class="gallary-gutter-section-cell">
+        <SectionCell class="gallery-gutter-section-cell">
         </SectionCell>        
-        <SectionCell class="gallary-gutter-section-cell">
+        <SectionCell class="gallery-gutter-section-cell">
         </SectionCell>
     </Section>
   </Layout>
 </html>
 
 <style>
-    :global(.gallary-gutter-section-cell) {
-        padding-bottom: 2rem;
-    }
+  :global(#gallery-section)
+  {
+    gap: var(--spacing-paragraph);
+  }
+  :global(.gallery-gutter-section-cell) {
+    padding-bottom: 2rem;
+    border: none;
+  }
 </style>

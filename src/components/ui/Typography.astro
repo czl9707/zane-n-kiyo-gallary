@@ -37,9 +37,9 @@ if (Tag == undefined) {
 
 ---
 
-<Tag {...others} class:list={[`typography-${variant}`, className]}>
-  <slot />
-</Tag>
+<Tag {...others} 
+  class:list={[`typography-${variant}`, className]}
+><slot /></Tag>
 
 <style>
 .typography-h1 {
