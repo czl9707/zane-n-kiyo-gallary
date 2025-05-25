@@ -2,14 +2,11 @@
 import Layout from "@/layouts/Layout.astro";
 import Head from "@/layouts/Head.astro";
 import Section from "@/components/ui/Section.astro";
-import SectionCell from "@/components/ui/Section.Cell.astro";
 import Card from "./_card.astro";
 
 import * as ZaneArchProject from "@/lib/model/zane-arch-project"
 
 const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
-
-
 
 ---
 
@@ -21,17 +18,9 @@ const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
   />
   <Layout>
     <Section id="gallery-section">
-        <SectionCell class="gallery-gutter-section-cell">
-            {
-                cardsCollections.map(card => <Card {...card}/>)
-            }
-        </SectionCell>
-        <SectionCell class="gallery-gutter-section-cell">
-        </SectionCell>
-        <SectionCell class="gallery-gutter-section-cell">
-        </SectionCell>        
-        <SectionCell class="gallery-gutter-section-cell">
-        </SectionCell>
+      {
+          cardsCollections.map(card => <Card {...card} class="gallery-item"/>)
+      }
     </Section>
   </Layout>
 </html>
@@ -40,9 +29,24 @@ const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
   :global(#gallery-section)
   {
     gap: var(--spacing-paragraph);
+    padding-top: var(--spacing-paragraph);
+    padding-bottom: var(--spacing-group);
   }
-  :global(.gallery-gutter-section-cell) {
-    padding-bottom: 2rem;
-    border: none;
+  :global(.gallery-gutter) {
+    flex: 1 1;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  :global(.gallery-item) {
   }
 </style>
+
+<script>
+import { initializeMasonry } from './masonry_util'
+
+initializeMasonry(
+  document.querySelector("#gallery-section")!
+);
+
+
+</script>

@@ -1,18 +1,32 @@
 ---
 import type { CardInfo } from "@/lib/model/common.type";
-import { calcImgHeightRatio, CARD_WIDTH_RATIO } from "./card_util";
 
-type Props = CardInfo;
+type Props = CardInfo & {class: string};
 
-const { date, img, title, href, hrefText } = Astro.props;
-const imgHeightRatio = calcImgHeightRatio(Astro.props);
+const CARD_WIDTH_RATIO = 5;
+
+function calcImgHeightRatio(cardInfo: CardInfo)
+{
+    return Math.round(cardInfo.img.height / cardInfo.img.width * CARD_WIDTH_RATIO)
+}
+
+function calcCardHeightRatio(cardInfo: CardInfo)
+{
+    return calcImgHeightRatio(cardInfo) + (cardInfo.href == undefined ? 0 : 1);
+}
+
+const { date, img, title, href, hrefText, class: className } = Astro.props;
 const yearMonth = date.toLocaleDateString("default", {
   year: "numeric",
   month: "long",
 });
+
+const imgHeightRatio = calcImgHeightRatio(Astro.props);
+const cardHeightRatio = calcCardHeightRatio(Astro.props);
+
 ---
 
-<div class="card">
+<div class:list={[className, "card"]} data-height={`${cardHeightRatio}`}>
   <div class="card-img-container">
     <img src={img.url} alt={title} />
     <div>
