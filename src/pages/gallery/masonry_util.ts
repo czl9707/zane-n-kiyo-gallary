@@ -6,10 +6,9 @@ export function initializeMasonry(el: HTMLDivElement)
         if (child.tagName.toLocaleLowerCase() != "div" || !child.classList.contains("gallery-item")) {
             throw new TypeError("Except all children of masonry are div, and have gallery-item class.");
         }
-        children.push(child as HTMLDivElement);
-        children = children.toReversed();
-    }
 
+        children.push(child as HTMLDivElement);
+    }
     el.innerHTML = ""
     createMasonryLayout(el, children);
 
@@ -39,9 +38,11 @@ function createMasonryLayout(el: HTMLDivElement, children: HTMLDivElement[])
     })
 
     for (const child of children) {
+        
         const childHeight = parseInt(child.getAttribute("data-height")!);
         const gutterInfo = gutters.find(
             gu => gu.height == Math.min(...gutters.map(item => item.height)));
+
         gutterInfo!.el.appendChild(child);
         gutterInfo!.height += childHeight;
     }

@@ -39,7 +39,7 @@ const cardHeightRatio = calcCardHeightRatio(Astro.props);
   class:list={[className, "card-container"]}
   data-height={`${cardHeightRatio}`}
 >
-  <a href={href}>
+  <a href={href} target="_blank" rel="noopener noreferrer">
     <div class="card-imgContainer">
       <img src={img.url} alt={title} />
       <div class="card-info">

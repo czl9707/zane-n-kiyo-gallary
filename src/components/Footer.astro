@@ -48,7 +48,7 @@ const kiyoLinks = [
     <div class="link-list">
         {
             zaneLinks.map(link => (
-              <a href={link.href}>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
                   <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
               </a>
             ))
@@ -61,7 +61,7 @@ const kiyoLinks = [
     <div class="link-list">
         {
             kiyoLinks.map(link => link.href != undefined ? (
-              <a href={link.href}>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
                 <Typography variant="body1" style={{ opacity: ".5" }}> {link.name} </Typography>
               </a>
             ): (

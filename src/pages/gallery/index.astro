@@ -5,9 +5,14 @@ import Section from "@/components/ui/Section.astro";
 import Card from "./_card.astro";
 
 import * as ZaneArchProject from "@/lib/model/zane-arch-project"
+import * as ZaneDevProject from "@/lib/model/zane-dev-project"
+import * as KiyoDesignProject from "@/lib/model/kiyo-design-project"
 
 const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
+cardsCollections.push(...(await ZaneDevProject.getAllAsCardInfo()));
+cardsCollections.push(...(await KiyoDesignProject.getAllAsCardInfo()));
 
+cardsCollections.sort((c1, c2) => c2.date.getTime() - c1.date.getTime());
 ---
 
 <!doctype html>
