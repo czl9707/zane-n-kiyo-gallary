@@ -27,6 +27,7 @@ function createMasonryLayout(el: HTMLDivElement, children: HTMLDivElement[])
     const columnNums = getColumnNums();
     if (el.children.length === columnNums) return;
 
+    el.setAttribute("data-initialized", "false");
     el.innerHTML = "";
     const gutters = Array.from({ length: columnNums }, () => {
         const gutter = document.createElement("div");
@@ -45,14 +46,15 @@ function createMasonryLayout(el: HTMLDivElement, children: HTMLDivElement[])
         gutterInfo!.height += childHeight;
     }
     gutters.forEach(g => el.appendChild(g.el));
+    el.setAttribute("data-initialized", "true");
 }
 
 function getColumnNums() {
-    const mdBreakpoint = parseInt(window
+    const lgBreakpoint = parseInt(window
         .getComputedStyle(document.body)
-        .getPropertyValue("--breakpoint-md"));
+        .getPropertyValue("--breakpoint-lg"));
 
-    if (window.innerWidth > mdBreakpoint){
+    if (window.innerWidth > lgBreakpoint){
         return 4;
     }
     else {

@@ -17,25 +17,35 @@ const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
     description="Zane and Kiyo - Ex-Architect couple, Currently in Software Engineering and Product Design."
   />
   <Layout>
-    <Section id="gallery-section">
+    <Section>
+      <div id="gallery-section-cell">
       {
           cardsCollections.map(card => <Card {...card} class="gallery-item"/>)
       }
+      </div>
     </Section>
   </Layout>
 </html>
 
 <style>
-  :global(#gallery-section)
+  :global(#gallery-section-cell)
   {
     gap: var(--spacing-paragraph);
     padding-top: var(--spacing-paragraph);
     padding-bottom: var(--spacing-group);
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+
+    &[data-initialized=true] {
+      visibility: visible;
+    }
   }
   :global(.gallery-gutter) {
     flex: 1 1;
     display: inline-flex;
     flex-direction: column;
+    gap: var(--spacing-paragraph);
   }
   :global(.gallery-item) {
   }
@@ -45,8 +55,6 @@ const cardsCollections = await ZaneArchProject.getAllAsCardInfo();
 import { initializeMasonry } from './masonry_util'
 
 initializeMasonry(
-  document.querySelector("#gallery-section")!
+  document.querySelector("#gallery-section-cell")!
 );
-
-
 </script>
