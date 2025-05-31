@@ -1,0 +1,106 @@
+:root {
+  --color-default-background: 0 0 0;
+  --color-default-foreground: 255 255 255;
+
+  --spacing-block: 12rem;
+  --spacing-group: 4rem;
+  --spacing-component: 2rem;
+  --spacing-paragraph: 1rem;
+
+  --size-header-height: 5rem;
+  --size-footer-height: 8rem;
+  --size-border-radius: 4px;
+
+  --typography-body1-fontFamily: "Geist", sans-serif;
+  --typography-body1-fontWeight: 400;
+  --typography-body1-fontSize: 1rem;
+  --typography-body1-lineHeight: 1.5;
+  --typography-body2-fontFamily: "Geist", sans-serif;
+  --typography-body2-fontWeight: 400;
+  --typography-body2-fontSize: 0.875rem;
+  --typography-body2-lineHeight: 1.5;
+  --typography-button-fontFamily: "Geist", sans-serif;
+  --typography-button-fontWeight: 700;
+  --typography-button-fontSize: 0.875rem;
+  --typography-button-lineHeight: 1.6;
+  --typography-code-fontFamily: "Geist Mono", monospace;
+  --typography-code-fontWeight: 400;
+  --typography-code-fontSize: 0.875rem;
+  --typography-code-lineHeight: 1.5;
+  --typography-h1-fontFamily: "Geist", sans-serif;
+  --typography-h1-fontWeight: 500;
+  --typography-h1-fontSize: 4.5rem;
+  --typography-h1-lineHeight: 1.25;
+  --typography-h2-fontFamily: "Geist", sans-serif;
+  --typography-h2-fontWeight: 500;
+  --typography-h2-fontSize: 3.5rem;
+  --typography-h2-lineHeight: 1.25;
+  --typography-h3-fontFamily: "Geist", sans-serif;
+  --typography-h3-fontWeight: 500;
+  --typography-h3-fontSize: 2.75rem;
+  --typography-h3-lineHeight: 1.25;
+  --typography-h4-fontFamily: "Geist", sans-serif;
+  --typography-h4-fontWeight: 500;
+  --typography-h4-fontSize: 2.25rem;
+  --typography-h4-lineHeight: 1.25;
+  --typography-h5-fontFamily: "Geist", sans-serif;
+  --typography-h5-fontWeight: 500;
+  --typography-h5-fontSize: 1.75rem;
+  --typography-h5-lineHeight: 1.4;
+  --typography-h6-fontFamily: "Geist", sans-serif;
+  --typography-h6-fontWeight: 500;
+  --typography-h6-fontSize: 1.25rem;
+  --typography-h6-lineHeight: 1.6;
+
+  --transition-short: 0.3s;
+  --transition-long: 0.6s;
+}
+
+:root {
+  --breakpoint-xs: 450px;
+  --breakpoint-sm: 720px;
+  --breakpoint-md: 1080px;
+  --breakpoint-lg: 1440px;
+}
+
+@custom-media --smaller-than-xs (max-width:450px);
+@custom-media --larger-than-xs (min-width:450px);
+@custom-media --smaller-than-sm (max-width:720px);
+@custom-media --larger-than-sm (min-width:720px);
+@custom-media --smaller-than-md (max-width:1080px);
+@custom-media --larger-than-md (min-width:1080px);
+@custom-media --smaller-than-lg (max-width:1440px);
+@custom-media --larger-than-lg (min-width:1440px);
+
+html,
+body {
+  width: 100%;
+
+  background: rgb(var(--color-default-background));
+  color: rgb(var(--color-default-foreground));
+  font-family: var(--typography-body1-fontFamily);
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p {
+  padding-block: 0;
+  padding-inline: 0;
+  margin-block: 0;
+  margin-inline: 0;
+}

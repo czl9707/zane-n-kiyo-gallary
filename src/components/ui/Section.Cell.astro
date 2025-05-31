@@ -16,13 +16,8 @@ const { class: className, blurBackground = false, ...others } = Astro.props;
 </div>
 
 <style>
-  :global(.section) > .section-cell:first-child {
-    border-left: 1px solid rgb(var(--color-default-foreground));
-  }
   :global(.section) > .section-cell {
-    border-right: 1px solid rgb(var(--color-default-foreground));
     box-sizing: border-box;
-    flex: 1 1;
     overflow-y: hidden;
   }
 

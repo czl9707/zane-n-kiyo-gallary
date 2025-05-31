@@ -1,25 +1,78 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div"> {}
+interface Props extends HTMLAttributes<"div"> {
+  maxCol?: number;
+  minCol?: number;
+}
 
-const { class: className, ...others } = Astro.props;
+const { class: className, maxCol = 1, minCol = 1, ...others } = Astro.props;
 ---
 
 <div class:list={["section", className]} {...others}>
   <slot />
 </div>
 
-<style>
+<style define:vars={{ "max-column": maxCol, "min-column": minCol }}>
   .section {
     border-bottom: 1px solid rgb(var(--color-default-foreground));
-    display: flex;
+    display: grid;
     position: relative;
-    flex-direction: row;
     align-items: stretch;
     box-sizing: border-box;
 
+    grid-template-columns: repeat(var(--max-column), minmax(0, 1fr));
     padding: 0
       max(calc((100vw - var(--breakpoint-lg)) / 2), var(--spacing-group));
+
+    @media (--smaller-than-sm) {
+      padding: 0 calc(var(--spacing-group) / 2);
+      grid-template-columns: repeat(var(--min-column), minmax(0, 1fr));
+    }
+  }
+
+  .section > :global(.section-cell) {
+    border-right: 1px solid rgb(var(--color-default-foreground));
+  }
+
+  .section > :global(.section-cell.first-col) {
+    border-left: 1px solid rgb(var(--color-default-foreground));
+  }
+  
+  .section > :global(.section-cell.non-first-row) {
+    border-top: 1px solid rgb(var(--color-default-foreground));
   }
 </style>
+
+<script>
+  const smBreakpoint = parseInt(
+    getComputedStyle(document.body)
+    .getPropertyValue('--breakpoint-sm'));
+
+  function applyGridBorder(){
+    document.querySelectorAll(".section").forEach((section) => {
+        const colCount = parseInt(
+          window.innerWidth < smBreakpoint? 
+            getComputedStyle(section).getPropertyValue("--min-column") :
+            getComputedStyle(section).getPropertyValue("--max-column") 
+        );
+        
+        for (let i = 0; i < section.children.length; i ++)
+        {
+          const cell = section.children.item(i)!;
+          if (i % colCount == 0) cell.classList.add("first-col");
+          else cell.classList.remove("first-col");
+        
+          if (i >= colCount) cell.classList.add("non-first-row");
+          else cell.classList.remove("non-first-row");
+        }
+      }
+    )
+  }
+
+  window.addEventListener(
+      "resize", applyGridBorder
+  );
+
+  applyGridBorder();
+</script>

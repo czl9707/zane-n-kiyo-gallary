@@ -63,13 +63,13 @@ const scrollingTexts = [
       <br/><br/>
       Her favorite activities include: <br/>  
       - Sleeping right in front of her daddy's monitor. Just like now. <br/>
-      - Sleeping in the middle of dinner table. <br/>
-      - Sleeping between mommy and daddy at night. <br/>
+      - Laying center of dinner table. <br/>
+      - Squeezing herself between mommy and daddy at night. <br/>
       - And yelling when waiting for her tuna cans.
     </Typography>
   </SectionCell>
 </Section>
-<Section>
+<Section maxCol={2}>
   <SectionCell class="hero-section-cell-base top-only">
     <svg width={"100%"} viewBox="0 0 45 8">
       <title id="zane-n-kiyo">Zane & Kiyo</title>
@@ -166,9 +166,12 @@ const scrollingTexts = [
   :global(.hero-section-cell-base) {
     position: relative;
     padding: var(--spacing-component);
-
+    
     &.left-only {
       padding-right: 50%;
+      @media(--smaller-than-sm){
+        padding-right: var(--spacing-component);
+      }
     }
     &.top-only {
       padding-bottom: var(--spacing-block);

@@ -51,8 +51,8 @@ function createMasonryLayout(el: HTMLDivElement, children: HTMLDivElement[])
 }
 
 function getColumnNums() {
-    const lgBreakpoint = parseInt(window
-        .getComputedStyle(document.body)
+    const lgBreakpoint = parseInt(
+        getComputedStyle(document.body)
         .getPropertyValue("--breakpoint-lg"));
 
     if (window.innerWidth > lgBreakpoint){

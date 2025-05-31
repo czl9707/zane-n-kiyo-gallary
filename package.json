@@ -1,6 +1,5 @@
 {
   "name": "zane-n-kiyo-gallery",
-  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
@@ -18,5 +17,11 @@
     "astro": "^5.7",
     "react": "^19.1",
     "react-dom": "^19.1"
+  },
+  "devDependencies": {
+    "@csstools/postcss-global-data": "^3.0",
+    "postcss": "^8.5",
+    "postcss-custom-media": "^11.0",
+    "postcss-custom-properties": "^14.0"
   }
 }
