@@ -10,8 +10,8 @@
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.0",
-    "@fontsource/geist": "^5.2.8",
-    "@fontsource/geist-mono": "^5.2.8",
+    "@fontsource/geist": "^5.2.7",
+    "@fontsource/geist-mono": "^5.2.7",
     "astro": "^5.16.4",
     "react": "^19.2.1",
     "react-dom": "^19.2.1"
