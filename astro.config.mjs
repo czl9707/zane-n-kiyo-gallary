@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), sitemap()],
-  site: "https://kiyo-n-zane.com",
+  site: "https://www.kiyo-n-zane.com",
   trailingSlash: "ignore",
   compressHTML: true,
   env: {
