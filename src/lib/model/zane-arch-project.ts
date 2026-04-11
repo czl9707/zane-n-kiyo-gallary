@@ -3,12 +3,13 @@ import type { CardInfo, ImageInfo } from "@/lib/model/common.type";
 const apiKey = import.meta.env.ADMIN_APIKEY as string;
 
 interface ZaneArchProjectDto {
+    id: string,
     title: string,
     subTitle: string,
     tags?: string[],
-    link: string,
-    startDate: number,
-    endDate?: number,
+    featured: boolean,
+    startDate: string,
+    endDate?: string | null,
     location?: string,
     contributors?: string,
     description: string,
@@ -40,7 +41,7 @@ export function asCard(dto: ZaneArchProjectDto): CardInfo {
     return {
         author: "Zane",
         title: dto.title as string,
-        href: `https://zane-portfolio.kiyo-n-zane.com/as/architect/project/${dto.link}`,
+        href: `https://zane-portfolio.kiyo-n-zane.com/project/by/architect/${dto.id}`,
         date: new Date(dto.startDate),
         img: dto.cover,
         hrefText: "View Project"

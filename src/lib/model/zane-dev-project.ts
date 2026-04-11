@@ -5,9 +5,10 @@ const apiKey = import.meta.env.ADMIN_APIKEY as string;
 interface ZaneDevProjectDto {
     title: string,
     tags?: string[],
+    featured: boolean,
     externalLink: string,
-    startDate: number,
-    endDate?: number,
+    startDate: string,
+    endDate?: string | null,
     description: string,
     cover: ImageInfo,
 }

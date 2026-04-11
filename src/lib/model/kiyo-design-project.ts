@@ -4,11 +4,11 @@ const apiKey = import.meta.env.ADMIN_APIKEY as string;
 
 interface KiyoDesignProjectDto {
     title: string,
-    subTitle:string,
+    subTitle: string,
     tags?: string[],
-    link: string,
-    startDate: number,
-    endDate?: number,
+    startDate: string,
+    endDate?: string | null,
+    contributors?: string,
     description: string,
     cover: ImageInfo,
 }
