@@ -2,7 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"compatibility_date": "2026-06-03",
 	"compatibility_flags": ["nodejs_compat"],
-	"name": "zane-n-kiyo-gallery",
+	"name": "zane-n-kiyo-gallary",
 	"assets": {
 		"directory": "./dist"
 	},
