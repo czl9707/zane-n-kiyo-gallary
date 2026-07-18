@@ -278,10 +278,6 @@ if (pickleSvg && pupils.every(p => p.el)) {
   };
 
   window.addEventListener("pointermove", (e) => lookAt(e.clientX, e.clientY));
-  // When the cursor leaves, ease the eyes back to center.
-  document.addEventListener("pointerleave", () => {
-    for (const pupil of pupils) pupil.el!.removeAttribute("transform");
-  });
 }
 
 </script>
