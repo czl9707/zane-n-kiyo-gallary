@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/react": "^7.1.8",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/geist": "^5.2.9",
     "@fontsource/geist-mono": "^5.2.8",
